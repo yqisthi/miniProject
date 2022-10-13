@@ -1,45 +1,41 @@
 <?php 
-
-//atur koneksi ke database
 session_start();
-require_once('dbLogin.php');
-
+require_once('db_login.php');
 //atur variabel
 $err        = "";
 $username   = "";
 
 
 
-
 // if(isset($_SESSION['session_username'])){
-//     header("location: home.php");
+//     header("location:mainmenu.php");
 //     exit();
 // }
 
 if(isset($_POST['login'])){
     $username   = $_POST['username'];
     $password   = $_POST['password'];
-
+    
     if($username == '' or $password == ''){
         $err .= "<li>Silakan masukkan username dan juga password.</li>";
     }else{
         $sql1 = "SELECT * FROM user WHERE username = '$username'";
-        $q1   = mysqli_query($db,$sql1);
+        $q1   = mysqli_query($koneksi, $sql1);
         $r1   = mysqli_fetch_array($q1);
 
         if($r1['username'] == ''){
-            $err = "<li>Username <b>$username</b> tidak tersedia.</li>";
+            $err .= "<li>Username <b>$username</b> tidak tersedia.</li>";
         }elseif($r1['password'] != md5($password)){
-            $err = "<li>Password yang dimasukkan tidak sesuai.</li>";
-        }       
+            $err .= "<li>Password yang dimasukkan tidak sesuai.</li>";
+        }      
         
         if(empty($err)){
             $_SESSION['session_username'] = $username; //server
             $_SESSION['session_password'] = md5($password);
 
-            header('location:home.php');
+            header("location:mainmenu.php");
         }
-        $db->close();
+        $koneksi->close();
     }
 }
 ?>
@@ -54,6 +50,8 @@ if(isset($_POST['login'])){
     <title>Welcome</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
     <style type="text/css">
         @font-face {
             font-family: "Poppins-Medium";
@@ -104,12 +102,22 @@ if(isset($_POST['login'])){
                     <div class="welcome mb-5 text-3xl w-10/12">
                         <div class="welcome-text">Welcome, User! Please sign in.</div>
                     </div>
+                    <!-- dropdown -->
+                    <div class="dropdown mt-3">
+                        <button class="btn btn-info dropdown-toggle text-light" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="book-dropdown">
+                            Login as
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="book-dropdown">
+                            <li><a class="dropdown-item" href="login-page.php">User</a></li>
+                            <li><a class="dropdown-item" href="login_admin">Admin</a></li>
+                        </ul>
+                    </div>
                     <form action="" method="post" id="loginform" role="form">
-                        <div class="form-group flex flex-col ">
-                            <label for="username">Username</label>
-                            <input class="border rounded mt-1 p-1 w-10/12 text-slate-400" id="login-username" type="text" class="form-control" name="username" value="<?php echo $username ?>" placeholder="username"</div>
+                    <div class="form-group flex flex-col ">
+                        <label for="username">Username</label>
+                        <input class="border rounded mt-1 p-1 w-10/12 text-slate-400" id="login-username" type="text" class="form-control" name="username" value="<?php echo $username ?>" placeholder="username">
                             
-                        </div>
+                    </div>
                         <div class="form-group flex flex-col mt-4 ">
                             <label for="password">Password</label>
                             <input class="border rounded mt-2 p-1 w-10/12 text-slate-400"id="login-password" type="password" class="form-control" name="password" placeholder="password">
@@ -128,7 +136,7 @@ if(isset($_POST['login'])){
             </div>
             <div class="container2  w-9/12">
                 <div class="picture flex flex-col justify-center items-center w-full h-full">
-                    <img src="./burjo-katanya.jpg">
+                    <img src="assets/burjo-katanya.jpg">
                 </div>
             </div>
         </div>
