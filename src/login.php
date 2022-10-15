@@ -5,8 +5,6 @@ require_once('dbLogin.php');
 $err        = "";
 $username   = "";
 
-
-
 // if(isset($_SESSION['session_username'])){
 //     header("location:mainmenu.php");
 //     exit();
@@ -96,7 +94,7 @@ if (isset($_POST['login'])) {
 
 </head>
 
-<body>
+<body class="w-screen h-screen overflow-hidden">
     <div class="content flex">
         <div class="container1 w-3/12">
             <div class="form-content flex justify-center items-center w-full h-full">
