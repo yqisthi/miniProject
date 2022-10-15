@@ -23,7 +23,7 @@ if (isset($_POST['login'])) {
         $q1   = mysqli_query($db, $sql1);
         $r1   = mysqli_fetch_array($q1);
 
-        if ($r1['username'] == '') {
+        if (mysqli_num_rows($q1) == 0) {
             $err .= "<li>Username <b>$username</b> tidak tersedia.</li>";
         } elseif ($r1['password'] != md5($password)) {
             $err .= "<li>Password yang dimasukkan tidak sesuai.</li>";
@@ -106,23 +106,27 @@ if (isset($_POST['login'])) {
                     </div>
                     <!-- dropdown -->
                     <div class="dropdown mt-3">
-                        <button class="btn btn-info dropdown-toggle text-light" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="book-dropdown">
-                            Login as
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="book-dropdown">
-                            <li><a class="dropdown-item" href="login.php">User</a></li>
-                            <li><a class="dropdown-item" href="loginAdmin.php">Admin</a></li>
-                        </ul>
+                        <div class="d-flex flex-row">
+                            <h1 class="align-middle pt-1 text-xl">Login As :&nbsp; &nbsp;</h1>
+                            <button class="btn btn-info dropdown-toggle text-light" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="book-dropdown">
+                                User
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="book-dropdown">
+                                <li><a class="dropdown-item" href="login.php">User</a></li>
+                                <li><a class="dropdown-item" href="loginAdmin.php">Admin</a></li>
+                            </ul>
+                        </div>
                     </div>
+                    <br>
                     <form action="" method="post" id="loginform" role="form">
                         <div class="form-group flex flex-col ">
                             <label for="username">Username</label>
-                            <input class="border rounded mt-1 p-1 w-10/12 text-slate-400" id="login-username" type="text" class="form-control" name="username" value="<?php echo $username ?>" placeholder="username">
+                            <input class="border rounded mt-1 p-1 w-10/12 text-black" id="login-username" type="text" class="form-control" name="username" value="<?php echo $username ?>" placeholder="username">
 
                         </div>
                         <div class="form-group flex flex-col mt-4 ">
                             <label for="password">Password</label>
-                            <input class="border rounded mt-2 p-1 w-10/12 text-slate-400" id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                            <input class="border rounded mt-2 p-1 w-10/12 text-black" id="login-password" type="password" class="form-control" name="password" placeholder="password">
                             <div class="text-danger"></div>
 
                             <?php if ($err) { ?>
@@ -137,7 +141,7 @@ if (isset($_POST['login'])) {
                 </div>
 
                 </form>
-                
+
             </div>
         </div>
         <div class="container2  w-9/12">
