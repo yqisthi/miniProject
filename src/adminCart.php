@@ -37,7 +37,7 @@ require_once('dbLogin.php');
                                 <th scope="col">Name</th>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">Price</th>
-                                <th scope="col">Action</th>
+                                
                             </tr>
                         </thead>
                         <?php
@@ -58,7 +58,7 @@ require_once('dbLogin.php');
                             echo '<td>' . $row->nama . '</td> ';
                             echo '<td>' . $row->waktu_pembelian . '</td> ';
                             echo '<td>' . $row->price . '</td> ';
-                            echo '<td><a class="bg-green-500 hover:bg-green-800 text-white font-bold py-1 px-2 rounded" href="".php?id='.$row->nama.'">Detail</a>&nbsp;&nbsp;</td>';
+                          
                             
                             echo '</tr>';
                             $i++;
