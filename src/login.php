@@ -1,6 +1,6 @@
-<?php 
+<?php
 session_start();
-require_once('db_login.php');
+require_once('dbLogin.php');
 //atur variabel
 $err        = "";
 $username   = "";
@@ -12,30 +12,30 @@ $username   = "";
 //     exit();
 // }
 
-if(isset($_POST['login'])){
+if (isset($_POST['login'])) {
     $username   = $_POST['username'];
     $password   = $_POST['password'];
-    
-    if($username == '' or $password == ''){
+
+    if ($username == '' or $password == '') {
         $err .= "<li>Silakan masukkan username dan juga password.</li>";
-    }else{
+    } else {
         $sql1 = "SELECT * FROM user WHERE username = '$username'";
-        $q1   = mysqli_query($koneksi, $sql1);
+        $q1   = mysqli_query($db, $sql1);
         $r1   = mysqli_fetch_array($q1);
 
-        if($r1['username'] == ''){
+        if ($r1['username'] == '') {
             $err .= "<li>Username <b>$username</b> tidak tersedia.</li>";
-        }elseif($r1['password'] != md5($password)){
+        } elseif ($r1['password'] != md5($password)) {
             $err .= "<li>Password yang dimasukkan tidak sesuai.</li>";
-        }      
-        
-        if(empty($err)){
+        }
+
+        if (empty($err)) {
             $_SESSION['session_username'] = $username; //server
             $_SESSION['session_password'] = md5($password);
 
-            header("location:mainmenu.php");
+            header("location:rumah.php");
         }
-        $koneksi->close();
+        $db->close();
     }
 }
 ?>
@@ -43,6 +43,7 @@ if(isset($_POST['login'])){
 
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,41 +64,42 @@ if(isset($_POST['login'])){
             src: url(assets/Poppins-SemiBold.ttf);
         }
 
-        .login-form{
+        .login-form {
             font-family: "Poppins-SemiBold";
             color: #486EF4;
         }
-        .welcome-text{
+
+        .welcome-text {
             font-family: "Poppins-SemiBold";
         }
 
-        .form-group{
+        .form-group {
             font-size: 1.35rem;
         }
 
-        button{
+        button {
             font-size: 1.35rem;
         }
 
-        .btn-submit{
+        .btn-submit {
             background-color: #486EF4;
         }
 
-        body{
+        body {
             background-color: white;
         }
-        
+
         #login-alert {
             font-size: 1rem;
         }
-        </style>
+    </style>
 
 </head>
 
 <body>
     <div class="content flex">
         <div class="container1 w-3/12">
-            <div class="form-content flex justify-center items-center w-full h-full" >
+            <div class="form-content flex justify-center items-center w-full h-full">
                 <div class="login-form w-11/12 pl-9">
                     <div class="welcome mb-5 text-3xl w-10/12">
                         <div class="welcome-text">Welcome, User! Please sign in.</div>
@@ -108,39 +110,43 @@ if(isset($_POST['login'])){
                             Login as
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="book-dropdown">
-                            <li><a class="dropdown-item" href="login-page.php">User</a></li>
-                            <li><a class="dropdown-item" href="login_admin">Admin</a></li>
+                            <li><a class="dropdown-item" href="login.php">User</a></li>
+                            <li><a class="dropdown-item" href="loginAdmin.php">Admin</a></li>
                         </ul>
                     </div>
                     <form action="" method="post" id="loginform" role="form">
-                    <div class="form-group flex flex-col ">
-                        <label for="username">Username</label>
-                        <input class="border rounded mt-1 p-1 w-10/12 text-slate-400" id="login-username" type="text" class="form-control" name="username" value="<?php echo $username ?>" placeholder="username">
-                            
-                    </div>
+                        <div class="form-group flex flex-col ">
+                            <label for="username">Username</label>
+                            <input class="border rounded mt-1 p-1 w-10/12 text-slate-400" id="login-username" type="text" class="form-control" name="username" value="<?php echo $username ?>" placeholder="username">
+
+                        </div>
                         <div class="form-group flex flex-col mt-4 ">
                             <label for="password">Password</label>
-                            <input class="border rounded mt-2 p-1 w-10/12 text-slate-400"id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                            <input class="border rounded mt-2 p-1 w-10/12 text-slate-400" id="login-password" type="password" class="form-control" name="password" placeholder="password">
                             <div class="text-danger"></div>
-                            
-                            <?php if($err){ ?>
-                            <div id="login-alert" class="alert alert-danger col-sm-12 w-10/12 mt-4 ">
-                            <ul><?php echo $err ?></ul>
-                            </div>
+
+                            <?php if ($err) { ?>
+                                <div id="login-alert" class="alert alert-danger col-sm-12 w-10/12 mt-4 ">
+                                    <ul><?php echo $err ?></ul>
+                                </div>
                             <?php } ?>
                         </div>
                         <button class="btn-submit text-white bg-blue-500 w-10/12 text-xl mt-3 py-1 rounded" type="submit" name="login" class="btn btn-success" value="Login">Login</button>
-                    </div>
-                    </form>
+                        <br>
+                        <a href="register_user.php">Sign Up</a>
                 </div>
-            </div>
-            <div class="container2  w-9/12">
-                <div class="picture flex flex-col justify-center items-center w-full h-full">
-                    <img src="assets/burjo-katanya.jpg">
-                </div>
+
+                </form>
+                
             </div>
         </div>
-    
+        <div class="container2  w-9/12">
+            <div class="picture flex flex-col justify-center items-center w-full h-full">
+                <img src="burjo-katanya.jpg">
+            </div>
+        </div>
+    </div>
+
     </div>
 </body>
 

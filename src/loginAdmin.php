@@ -33,7 +33,7 @@ if(isset($_POST['login'])){
             $_SESSION['session_username_admin'] = $username; //server
             $_SESSION['session_password'] = md5($password);
 
-            header("location:adminMenu.php");
+            header("location:dashboardAdmin.php");
         }
         $db->close();
     }
@@ -100,7 +100,7 @@ if(isset($_POST['login'])){
             <div class="form-content flex justify-center items-center w-full h-full" >
                 <div class="login-form w-11/12 pl-9">
                     <div class="welcome mb-5 text-3xl w-10/12">
-                        <div class="welcome-text">Welcome, User! Please sign in.</div>
+                        <div class="welcome-text">Welcome, Admin! Please sign in.</div>
                     </div>
                     <!-- dropdown -->
                     <div class="dropdown mt-3">
@@ -130,6 +130,8 @@ if(isset($_POST['login'])){
                             <?php } ?>
                         </div>
                         <button class="btn-submit text-white bg-blue-500 w-10/12 text-xl mt-3 py-1 rounded" type="submit" name="login" class="btn btn-success" value="Login">Login</button>
+                        <br>
+                        <a href="register_user.php">Sign Up</a>
                     </div>
                     </form>
                 </div>

@@ -9,9 +9,9 @@ function rupiah($angka){
 }
 
 $_SESSION['cart'] = null;
-$update = "UPDATE user SET saldo=saldo-".$_SESSION["harga"]." WHERE username='".$_SESSION["session_username"]."'";
+$update = "UPDATE user SET saldo=saldo-".$_SESSION["harga"]."";
 if ($db->query($update) === TRUE) {
-  echo "Record updated successfully";
+  echo "";
 } else {
   echo "Error updating record: " . $db->error;
 }
@@ -44,7 +44,7 @@ if ($db->query($update) === TRUE) {
                 </div>
                 <?php
                     $saldo = 0;
-                    $query_saldo = "SELECT saldo FROM user WHERE username='".$_SESSION["session_username"]."'";
+                    $query_saldo = "SELECT saldo FROM user";
                     $result_saldo = $db->query($query_saldo);
                     while ($row = $result_saldo->fetch_object()){
                         $saldo = $row->saldo;
@@ -61,7 +61,7 @@ if ($db->query($update) === TRUE) {
                         ?>
                         <br>
                         <!-- Using utilities: -->
-                        <a class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-8 rounded" href="home.php">Pesan Lagi</a>
+                        <a class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-8 rounded" href="rumah.php">Pesan Lagi</a>
                 </div>
             </div>
         </div>
