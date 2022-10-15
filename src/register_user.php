@@ -1,4 +1,4 @@
-<?php require_once('db_login.php'); ?>
+<?php require_once('dbLogin.php'); ?>
 
 <?php
 
@@ -9,7 +9,7 @@ if (isset($_POST['register'])) {
     $email = test_input($_POST['email']);
     $nama = test_input($_POST['nama']);
     $telepon = test_input($_POST['no_telepon']);
-    $result = $koneksi->query("INSERT INTO user(username, password, nama, email, no_telepon) VALUES('$username', '$password', '$nama', '$email', '$telepon')");
+    $result = $db->query("INSERT INTO user(username, password, nama, email, no_telepon) VALUES('$username', '$password', '$nama', '$email', '$telepon')");
 
     if ($result):
         ?>
@@ -113,7 +113,7 @@ if (isset($_POST['register'])) {
             </div>
             <div class="container2  w-9/12 h-max  ">
                 <div class="picture flex flex-col justify-center items-center w-full h-full">
-                    <img src="assets/burjo-katanya.jpg">
+                    <img src="burjo-katanya.jpg">
                 </div>
             </div>
         </div>

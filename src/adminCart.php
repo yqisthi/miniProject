@@ -45,7 +45,7 @@ require_once('dbLogin.php');
                         require_once('dbLogin.php');
                         // Execute the query
                         $query = " SELECT nama,waktu_pembelian,price FROM antrian INNER JOIN user
-                        ON antrian.id_antrian = user.id_antrian ";
+                        ON antrian.user_username_user = user.username ";
                         $result = $db->query($query);
                         if (!$result) {
                             die("Could not query the database: <br />" . $db->error . "<br>Query: " . $query);
@@ -58,7 +58,8 @@ require_once('dbLogin.php');
                             echo '<td>' . $row->nama . '</td> ';
                             echo '<td>' . $row->waktu_pembelian . '</td> ';
                             echo '<td>' . $row->price . '</td> ';
-                            echo '<td><a class="btn btn-warning btn-sm" href="#.php?id='.$row->name.'">Edit</a>&nbsp;&nbsp;</td>';
+                            echo '<td><a class="bg-green-500 hover:bg-green-800 text-white font-bold py-1 px-2 rounded" href="".php?id='.$row->nama.'">Detail</a>&nbsp;&nbsp;</td>';
+                            
                             echo '</tr>';
                             $i++;
                         }
@@ -69,7 +70,7 @@ require_once('dbLogin.php');
                         $db->close();
                         ?>
                     </table>
-                    <a class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-8 rounded " href="rumah.php">Kembali</a>
+                    <a class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-8 rounded " href="dashboardAdmin.php">Kembali</a>
                 </div>
             </div>
         </div>
