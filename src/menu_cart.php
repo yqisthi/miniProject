@@ -14,6 +14,12 @@ if ($id != "") {
     }
 }
 
+function rupiah($angka)
+{
+    $hasil_rupiah = "Rp" . number_format($angka, 2, ',', '.');
+    return $hasil_rupiah;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -94,9 +100,9 @@ if ($id != "") {
                             ?>
                         </tbody>
                     </table>
-                    <div class="text-center"><?php echo 'Saldo anda : Rp' . $saldo . '' ?></div><br>
+                    <div class="text-center"><?php echo 'Saldo anda : ' . rupiah($saldo) . '' ?></div><br>
 
-                    <div class="text-center"><?php echo 'Jumlah yang harus dibayar : Rp' . $jumlah_harga . '' ?></div><br>
+                    <div class="text-center"><?php echo 'Jumlah yang harus dibayar : ' . rupiah($jumlah_harga) . '' ?></div><br>
                     <div class="d-flex justify-content-center item-align-center w-auto h-auto">
                         <a class="btn btn-primary" href="rumah.php">Kembali ke menu</a>&nbsp;&nbsp;
                         <?php
