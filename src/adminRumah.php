@@ -1,14 +1,4 @@
 <?php
-// $db_host = 'localhost';
-// $db_database= 'burjo';
-// $db_username = 'root';
-// $db_password = '';
-
-// // connect database
-// $db = new mysqli($db_host, $db_username, $db_password, $db_database);
-// if ($db->connect_errno){
-//     die ("Could not connect to the database: <br />". $db->connect_error);
-// }
 session_start();
 require_once('dbLogin.php');
 function rupiah($angka)
@@ -44,7 +34,7 @@ if (!isset($_SESSION['session_username_admin'])) {
 <body class="bg-slate-100">
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand ms-3 fw-bold text-light" href="#">Admin</a>
+            <a class="navbar-brand ms-3 fw-bold text-light" href="#"><?php echo $_SESSION['session_username_admin']; ?></a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

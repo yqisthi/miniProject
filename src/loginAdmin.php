@@ -136,8 +136,6 @@ if (isset($_POST['login'])) {
                             <?php } ?>
                         </div>
                         <button class="btn-submit text-white bg-blue-500 w-10/12 text-xl mt-3 py-1 rounded" type="submit" name="login" class="btn btn-success" value="Login">Login</button>
-                        <br>
-                        <a href="register_user.php">Sign Up</a>
                 </div>
                 </form>
             </div>
