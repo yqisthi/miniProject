@@ -16,6 +16,10 @@ function rupiah($angka)
     $hasil_rupiah = "Rp " . number_format($angka, 2, ',', '.');
     return $hasil_rupiah;
 }
+
+if (!isset($_SESSION['session_username_admin'])) {
+    header('Location: loginAdmin.php');
+}
 ?>
 
 
@@ -46,7 +50,7 @@ function rupiah($angka)
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <a class="btn button-log me-3 text-light fw-bold" href="logout.php" role="button">Logout</a>
+            <a class="btn button-log me-3 text-light fw-bold" href="logoutAdmin.php" role="button">Logout</a>
         </div>
     </nav>
     <div class="h-screen w-full flex justify-center">

@@ -1,8 +1,8 @@
 <?php
-// session_start(); //inisialisasi session
-// if (!isset($_SESSION['username'])) {
-//     header('Location: login.php');
-// }
+session_start(); //inisialisasi session
+if (!isset($_SESSION['session_username_admin'])) {
+    header('Location: login.php');
+}
 ?>
 
 <!DOCTYPE html>
