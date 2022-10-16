@@ -47,7 +47,7 @@ if (!isset($_SESSION['session_username_admin'])) {
 
         <div class="pt-8 w-full">
 
-            <h1 class="text-center font-sans font-bold text-2xl">Your Menu</h1>
+            <h1 class="text-center font-sans font-bold text-2xl">Menu List</h1>
             <div class="container">
                 <a class="btn btn-primary me-3" style="margin-left: 80px;" href="tambahMenuForm.php" role="button">Tambah Menu</a>
                 <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 p-8">
@@ -75,19 +75,6 @@ if (!isset($_SESSION['session_username_admin'])) {
                         }
                     }
                     ?>
-
-                    <!-- <div class="col-span-1 h-96 flex justify-center px-2 py-4">
-                    <div class="relative">
-                        <img class="rounded-xl" src="https://picsum.photos/200" alt="">
-                        <div class="py-2">
-                            <h1 class="font-bold">Title</h1>
-                            <p class="font-light">Desc</p>
-                            <p class="font-bold mt-1">Rp100.000</p>
-                        </div> -->
-                    <!-- <div class="absolute right-0 bottom-2">
-                            <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
-                            href="menu_cart.php?id=".$row["id_menu"]>Add +</a>
-                        </div> -->
                 </div>
             </div>
         </div>

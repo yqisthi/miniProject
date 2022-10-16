@@ -32,6 +32,7 @@
         </div>
         <br>
         <button class="btn btn-primary active" type="submit">Submit</button>
+        <a class="btn btn-secondary active" type="button" href="adminRumah.php">Cancel</a>
     </form>
 </body>
 
