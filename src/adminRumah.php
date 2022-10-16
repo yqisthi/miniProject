@@ -31,7 +31,7 @@ function rupiah($angka)
     <title>Document</title>
 
     <style>
-        .navbar{
+        .navbar {
             background-color: #16003B;
         }
     </style>
@@ -46,7 +46,7 @@ function rupiah($angka)
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <a class="btn button-log me-3 text-light fw-bold" href="logoutAdmin.php" role="button">Logout</a>
+            <a class="btn button-log me-3 text-light fw-bold" href="logout.php" role="button">Logout</a>
         </div>
     </nav>
     <div class="h-screen w-full flex justify-center">
