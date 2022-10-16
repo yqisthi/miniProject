@@ -28,7 +28,7 @@
         </div>
         <div class="form-group">
             <label for="link">Link Image:</label>
-            <input type="text" class="form-control" id="link" placeholder="https://">
+            <input type="text" class="form-control" id="link" name ="link" placeholder="https://">
         </div>
         <br>
         <button class="btn btn-primary active" type="submit">Submit</button>

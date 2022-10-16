@@ -10,6 +10,11 @@ function rupiah($angka)
 if (!isset($_SESSION['session_username'])) {
     header('Location: login.php');
 }
+$q1 = "SELECT saldo FROM user WHERE username = '" . $_SESSION['session_username'] . "'";
+$result_q1 = $db->Query($q1);
+while ($row = $result_q1->fetch_object()) {
+    $saldo = $row->saldo;
+}
 
 ?>
 
@@ -36,7 +41,10 @@ if (!isset($_SESSION['session_username'])) {
 <body class="bg-slate-100">
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
+            <div>
             <a class="navbar-brand ms-3 fw-bold text-light" href="#"><?php echo $_SESSION['session_username']; ?></a>
+            <h1 class="navbar-brand ms-3 fw-bold text-light">Saldo: <?php echo rupiah($saldo); ?></h1>
+            </div>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

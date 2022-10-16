@@ -44,7 +44,7 @@ require_once('dbLogin.php');
                         // Include our login information
                         require_once('dbLogin.php');
                         // Execute the query
-                        $query = " SELECT nama,waktu_pembelian,price FROM antrian INNER JOIN user
+                        $query = " SELECT id_antrian,nama,waktu_pembelian,price FROM antrian INNER JOIN user
                         ON antrian.user_username_user = user.username ";
                         $result = $db->query($query);
                         if (!$result) {
@@ -58,6 +58,7 @@ require_once('dbLogin.php');
                             echo '<td>' . $row->nama . '</td> ';
                             echo '<td>' . $row->waktu_pembelian . '</td> ';
                             echo '<td>' . $row->price . '</td> ';
+                            echo '<td> <a class="bg-green-500 hover:bg-green-800 text-white font-bold py-1 px-8 rounded " href="adminDetail.php?id_antrian='.$row->id_antrian.'">Detail</a></td> ';
                           
                             
                             echo '</tr>';
