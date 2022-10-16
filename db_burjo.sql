@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2022 at 06:29 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: Oct 16, 2022 at 03:29 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -116,7 +116,7 @@ CREATE TABLE `menu` (
   `id_menu` int(11) NOT NULL,
   `nama_menu` varchar(200) NOT NULL,
   `harga` bigint(20) NOT NULL,
-  `images` varchar(100) NOT NULL
+  `images` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -124,14 +124,15 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id_menu`, `nama_menu`, `harga`, `images`) VALUES
-(1, 'nasi ayam bali', 13000, 'jeri.jpg'),
-(2, 'Mie Dok Dok', 12000, 'miedokdok.jfif'),
-(3, 'Mie Tek Tek', 12000, 'mietektek.jfif'),
-(4, 'Magelangan', 13000, 'magelangan.jfif'),
-(5, 'Mie Goreng', 12000, 'miegoreng.jfif'),
-(6, 'Omelet', 14000, 'omelet.jpg'),
-(7, 'Orak Arik Telur', 11000, 'orakariktelur.jfif'),
-(8, 'Es Teh', 3000, 'esteh.jfif');
+(-10, 'nasi ayam bali', 13000, 'https://i0.wp.com/resepkoki.id/wp-content/uploads/2020/03/Resep-Nasi-Campur-Bali.jpg?fit=1474%2C1445&ssl=1'),
+(-9, 'Mie Dok Dok', 12000, 'https://cdn.idntimes.com/content-images/community/2018/04/mie-kuah-pedas-pengusahasukses-3e6a4e625a774c03ff2ab0790498213c_600x400.jpg'),
+(-8, 'Mie Tek Tek', 12000, 'https://img-global.cpcdn.com/recipes/4ea61585c9ac0282/400x400cq70/photo.jpg'),
+(-7, 'Magelangan', 13000, 'https://asset.kompas.com/crops/Aprv8FWSU3AmRPIi8wmgBUtUuGI=/0x0:6000x4000/750x500/data/photo/2020/04/15/5e966c3becce7.jpg'),
+(-6, 'Mie Goreng', 12000, 'https://asset.kompas.com/crops/032NyNKaO9X61kL1ZpU9AS4khrU=/52x28:954x629/750x500/data/photo/2020/11/19/5fb641f087a66.jpg'),
+(-5, 'Omelet', 14000, 'https://awsimages.detik.net.id/community/media/visual/2022/04/02/resep-omelet-tomat_43.jpeg?w=700&q=90'),
+(-4, 'Orak Arik Telur', 11000, 'https://awsimages.detik.net.id/community/media/visual/2022/04/06/resep-telur-orak-arik-pakai-2-bahan_43.jpeg?w=1200'),
+(12, 'Bebek Goreng', 27000, 'https://asset.kompas.com/crops/UhV2ngrlUWo92yJyruxM7I-vSNE=/69x65:869x598/750x500/data/photo/2021/11/25/619f7dc86e939.jpg'),
+(1000, 'Es Teh', 3000, 'https://i.pinimg.com/originals/5d/31/ef/5d31ef90cd6c389e07bc48a08e583122.jpg');
 
 -- --------------------------------------------------------
 
@@ -142,17 +143,17 @@ INSERT INTO `menu` (`id_menu`, `nama_menu`, `harga`, `images`) VALUES
 CREATE TABLE `pemesanan` (
   `id_pemesanan` int(11) NOT NULL,
   `waktu_pemesanan` date NOT NULL,
-  `total_harga` bigint(11) NOT NULL,
   `antrian_id_antrian` int(11) NOT NULL,
-  `admin_username_admin` varchar(200) NOT NULL
+  `admin_username_admin` varchar(200) NOT NULL,
+  `id_menu_pemesanan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pemesanan`
 --
 
-INSERT INTO `pemesanan` (`id_pemesanan`, `waktu_pemesanan`, `total_harga`, `antrian_id_antrian`, `admin_username_admin`) VALUES
-(1, '2022-10-01', 13000, 1, 'admin_1');
+INSERT INTO `pemesanan` (`id_pemesanan`, `waktu_pemesanan`, `antrian_id_antrian`, `admin_username_admin`, `id_menu_pemesanan`) VALUES
+(1, '2022-10-01', 1, 'admin_1', 1);
 
 -- --------------------------------------------------------
 
@@ -196,7 +197,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `nama`, `email`, `no_telepon`, `saldo`) VALUES
-('user1', '6ad14ba9986e3615423dfca256d04e3f', 'jeri', 'jeri@yahoo.com', 82431643783, 37000);
+('user1', '6ad14ba9986e3615423dfca256d04e3f', 'jeri', 'jeri@yahoo.com', 82431643783, 100000);
 
 --
 -- Indexes for dumped tables
@@ -242,8 +243,7 @@ ALTER TABLE `menu`
 ALTER TABLE `pemesanan`
   ADD PRIMARY KEY (`id_pemesanan`),
   ADD KEY `admin_username_admin` (`admin_username_admin`),
-  ADD KEY `antrian_id_antrian` (`antrian_id_antrian`),
-  ADD KEY `total_harga` (`total_harga`);
+  ADD KEY `antrian_id_antrian` (`antrian_id_antrian`);
 
 --
 -- Indexes for table `transaksi`
@@ -256,6 +256,16 @@ ALTER TABLE `transaksi`
 --
 ALTER TABLE `user`
   ADD UNIQUE KEY `username` (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
 
 --
 -- Constraints for dumped tables
@@ -272,12 +282,6 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `antrian`
   ADD CONSTRAINT `user_username_user` FOREIGN KEY (`user_username_user`) REFERENCES `login` (`username`);
-
---
--- Constraints for table `login`
---
-ALTER TABLE `login`
-  ADD CONSTRAINT `menu_id_menu` FOREIGN KEY (`menu_id_menu`) REFERENCES `menu` (`id_menu`);
 
 --
 -- Constraints for table `pemesanan`
