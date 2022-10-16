@@ -14,6 +14,12 @@ if ($id != "") {
     }
 }
 
+function rupiah($angka)
+{
+    $hasil_rupiah = "Rp" . number_format($angka, 2, ',', '.');
+    return $hasil_rupiah;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -54,10 +60,15 @@ if ($id != "") {
                         </thead>
                         <tbody>
                             <?php
-                            $saldo = 0;
+                            $q1 = "SELECT saldo FROM user WHERE username = '" . $_SESSION['session_username'] . "'";
+                            $result_q1 = $db->Query($q1);
+                            while ($row = $result_q1->fetch_object()) {
+                                $saldo = $row->saldo;
+                            }
+
                             $query_saldo = "SELECT harga FROM menu";
                             $result_saldo = $db->query($query_saldo);
-                            while ($row = $result_saldo->fetch_object()){
+                            while ($row = $result_saldo->fetch_object()) {
                                 $harga = $row->harga;
                             }
 
@@ -89,9 +100,9 @@ if ($id != "") {
                             ?>
                         </tbody>
                     </table>
-                    <div class="text-center"><?php echo 'Salo anda : Rp' . $saldo . '' ?></div><br>
+                    <div class="text-center"><?php echo 'Saldo anda : ' . rupiah($saldo) . '' ?></div><br>
 
-                    <div class="text-center"><?php echo 'Jumlah yang harus dibayar : Rp.' . $jumlah_harga . '' ?></div><br>
+                    <div class="text-center"><?php echo 'Jumlah yang harus dibayar : ' . rupiah($jumlah_harga) . '' ?></div><br>
                     <div class="d-flex justify-content-center item-align-center w-auto h-auto">
                         <a class="btn btn-primary" href="rumah.php">Kembali ke menu</a>&nbsp;&nbsp;
                         <?php

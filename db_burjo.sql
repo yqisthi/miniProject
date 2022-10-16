@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2022 at 10:50 AM
+-- Generation Time: Oct 16, 2022 at 06:29 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -115,7 +115,6 @@ INSERT INTO `lokasi` (`id_lokasi`, `nama_lokasi`, `alamat`) VALUES
 CREATE TABLE `menu` (
   `id_menu` int(11) NOT NULL,
   `nama_menu` varchar(200) NOT NULL,
-  `kategori` varchar(200) NOT NULL,
   `harga` bigint(20) NOT NULL,
   `images` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -124,14 +123,15 @@ CREATE TABLE `menu` (
 -- Dumping data for table `menu`
 --
 
-INSERT INTO `menu` (`id_menu`, `nama_menu`, `kategori`, `harga`, `images`) VALUES
-(1, 'nasi ayam bali', 'makanan', 13000, 'jeri.jpg'),
-(2, 'nasi sarden', 'makanan', 10000, 'jeri.jpg\r\n'),
-(3, 'nasi goreng', 'makanan', 10000, 'jeri.jpg'),
-(4, 'es teh manis', 'minuman', 3000, 'jeri.jpg'),
-(5, 'nutlisali jeruk peras', 'minuman', 4000, 'jeri.jpg\r\n'),
-(6, 'kopi bad day ', 'minuman', 5000, 'jeri.jpg'),
-(7, 'manusia jeri', 'cemilan', 300000, 'jeri.jpg');
+INSERT INTO `menu` (`id_menu`, `nama_menu`, `harga`, `images`) VALUES
+(1, 'nasi ayam bali', 13000, 'jeri.jpg'),
+(2, 'Mie Dok Dok', 12000, 'miedokdok.jfif'),
+(3, 'Mie Tek Tek', 12000, 'mietektek.jfif'),
+(4, 'Magelangan', 13000, 'magelangan.jfif'),
+(5, 'Mie Goreng', 12000, 'miegoreng.jfif'),
+(6, 'Omelet', 14000, 'omelet.jpg'),
+(7, 'Orak Arik Telur', 11000, 'orakariktelur.jfif'),
+(8, 'Es Teh', 3000, 'esteh.jfif');
 
 -- --------------------------------------------------------
 
@@ -196,7 +196,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `nama`, `email`, `no_telepon`, `saldo`) VALUES
-('user1', '6ad14ba9986e3615423dfca256d04e3f', 'jeri', 'jeri@yahoo.com', 82431643783, 24000);
+('user1', '6ad14ba9986e3615423dfca256d04e3f', 'jeri', 'jeri@yahoo.com', 82431643783, 37000);
 
 --
 -- Indexes for dumped tables

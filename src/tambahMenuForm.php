@@ -10,7 +10,7 @@
     <title>Burjo Praktiz</title>
 
     <style>
-        .navbar{
+        .navbar {
             background-color: #16003B;
         }
     </style>
@@ -30,9 +30,10 @@
             <label for="link">Link Image:</label>
             <input type="text" class="form-control" id="link" placeholder="https://">
         </div>
-        <button class="btn btn-primary" type="submit" >Submit</button>
+        <br>
+        <button class="btn btn-primary active" type="submit">Submit</button>
+        <a class="btn btn-secondary active" type="button" href="adminRumah.php">Cancel</a>
     </form>
 </body>
 
 </html>
-

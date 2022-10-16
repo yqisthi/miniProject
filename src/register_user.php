@@ -58,7 +58,7 @@ if (isset($_POST['register'])) {
     }
 
     if ($valid) {
-        $result = $db->query("INSERT INTO user(username, password, nama, email, no_telepon) VALUES('$username', '$password', '$nama', '$email', '$telepon')");
+        $result = $db->query("INSERT INTO user(username, password, nama, email, no_telepon, saldo) VALUES('$username', '$password', '$nama', '$email', '$telepon', '100000')");
         if ($result) {
             echo '<script>alert("Akun berhasil dibuat");</script>';
             header("Location: login.php");
